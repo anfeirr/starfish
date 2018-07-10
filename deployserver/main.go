@@ -5,15 +5,8 @@ import (
 	"io"
 	"os/exec"
 	"log"
+
 )
-
-func main()  {
-	http.HandleFunc("/",deploy)
-	http.ListenAndServe("8001",nil)
-
-	
-}
-
 func deploy(w http.ResponseWriter,r *http.Request){
 	io.WriteString(w,"<h1> Deploy is starting </h1>")
 	reLaunch()
@@ -28,3 +21,11 @@ func reLaunch(){
 	}
 	err = cmd.Wait()
 }
+
+func main()  {
+	http.HandleFunc("/",deploy)
+	http.ListenAndServe(":5000",nil)
+
+	
+}
+
